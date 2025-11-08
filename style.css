@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background-color: #FFFFFF;
+  color: #333333;
+  /* Hide the default cursor */
+  cursor: none;
+}
+
+/* For custom scrollbar in industries page */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Cursor */
+#cursor-dot,
+#cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  backface-visibility: hidden; /* Performance improvement */
+}
+
+#cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #75C4C4; /* primary-accent */
+}
+
+#cursor-follower {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(117, 196, 196, 0.2); /* primary-accent with opacity */
+  border: 1px solid rgba(117, 196, 196, 0.3);
+  transition: transform 0.3s ease-out, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+#cursor-follower.cursor-grow {
+  transform: scale(1.5) translate(-33%, -33%);
+  background-color: rgba(176, 252, 254, 0.2); /* secondary-accent with opacity */
+  border-color: rgba(176, 252, 254, 0.4);
+}
+
+/* Hide custom cursor on mobile */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  #cursor-dot,
+  #cursor-follower {
+    display: none;
+  }
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.4s ease;
+}
